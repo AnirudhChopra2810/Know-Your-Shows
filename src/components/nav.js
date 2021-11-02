@@ -1,14 +1,19 @@
 import { useState } from 'react';
-import { Menu, Segment, Header } from 'semantic-ui-react';
+import { Menu, Segment, Header, Icon } from 'semantic-ui-react';
 
-const Nav = () => {
+const Nav = (props) => {
+	const handleClick = () => {
+		props.setSidebar(true);
+	};
 	return (
 		<div style={{ backgroundColor: 'black' }}>
-			<Menu inverted>
-				<Menu.Item header>Our Company</Menu.Item>
-				<Menu.Item name="aboutUs" />
-				<Menu.Item name="jobs" />
-				<Menu.Item name="locations" />
+			<Menu inverted size="huge">
+				<Menu.Item header>Know Your Shows</Menu.Item>
+				<Menu.Menu position="right">
+					<Menu.Item onClick={handleClick}>
+						<Icon name="th" color="yellow" />
+					</Menu.Item>
+				</Menu.Menu>
 			</Menu>
 		</div>
 	);
