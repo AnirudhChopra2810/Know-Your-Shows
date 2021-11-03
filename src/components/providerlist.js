@@ -48,13 +48,15 @@ const ProviderList = ({ apiKey, channelId }) => {
 			<div className="Container">
 				<div className="display">
 					{contentList.map((link, id) => {
-						console.log(link.snippet.thumbnails);
+						console.log(link);
 						//link means the data at array[id]
 						return (
 							<div className="container">
 								<div className="display">
 									<Cards
 										thumbnail={link.snippet.thumbnails.high.url}
+										title={link.snippet.title}
+										description={link.snippet.description}
 										id={id}
 										link={link}
 										setOpen={setOpen}

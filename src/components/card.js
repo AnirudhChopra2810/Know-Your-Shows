@@ -3,7 +3,7 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 import Modals from './modal';
 import config from '../assets/config';
 
-const Cards = ({ thumbnail, setOpen, open, id, link }) => {
+const Cards = ({ thumbnail, setOpen, open, link, title, description }) => {
 	const { API_KEY } = config;
 	const [clicked, setClicked] = useState(false);
 	const [videoId, setVideoId] = useState('');
@@ -17,19 +17,14 @@ const Cards = ({ thumbnail, setOpen, open, id, link }) => {
 					setClicked(true);
 					setOpen(true);
 				}}
+				style={{ overflow: 'auto', maxHeight: '30em' }}
 			>
 				<Image src={thumbnail} wrapped ui={false} className="image" />
-				<Card.Content>
-					<Card.Header>Daniel</Card.Header>
+				<Card.Content className="content">
+					<Card.Header>{title}</Card.Header>
 					<Card.Meta>Joined in 2016</Card.Meta>
-					<Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
+					<Card.Description>{description}</Card.Description>
 				</Card.Content>
-				{/* <Card.Content extra>
-			<a>
-				<Icon name="user" />
-				10 Friends
-			</a>
-		</Card.Content> */}
 			</Card>
 
 			{clicked === true && <Modals apiKey={API_KEY} open={open} videoId={videoId} setOpen={setOpen} />}

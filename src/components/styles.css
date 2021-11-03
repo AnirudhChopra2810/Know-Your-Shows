@@ -23,3 +23,7 @@
 .container::-webkit-scrollbar {
 	overflow: hidden;
 }
+
+.image {
+	height: 18rem;
+}
