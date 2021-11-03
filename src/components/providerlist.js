@@ -4,7 +4,6 @@ import config from '../assets/config';
 import netflixImage from '../assets/netflix2.png';
 import primeImage from '../assets/prime2.svg.png';
 import Cards from './card';
-import { Card, Grid } from 'semantic-ui-react';
 
 const { YT_CHANNEL_IDS } = config;
 
@@ -64,19 +63,6 @@ const ProviderList = ({ apiKey, channelId }) => {
 };
 
 export default ProviderList;
-
-{
-	/* <img
-		key={id}
-		height="150px"
-		className="image mx-2"
-		src={link.snippet.thumbnails.high.url}
-		onClick={() => {
-			console.log(link.id.videoId);
-			// handleMouseEnter(id, link.id.videoId);
-		}}
-	></img> */
-}
 
 {
 	/* 
