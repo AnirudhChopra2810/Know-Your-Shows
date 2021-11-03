@@ -1,5 +1,5 @@
 import react from 'react';
-const API_KEY = 'AIzaSyBBHZd4xay3rfcOfd1-HJRqTUmGV_lYLIk';
+const API_KEY = 'AIzaSyB_AZeQnCsy3Lm7DklpKpzoF5WKD90vTEg';
 
 const YT_CHANNEL_IDS = {
 	NETFLIX: 'UCZSNzBgFub_WWil6TOTYwAg',
