@@ -27,3 +27,8 @@
 .image {
 	height: 18rem;
 }
+
+.cards {
+	max-height: 30em;
+	overflow: auto;
+}

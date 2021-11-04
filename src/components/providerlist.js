@@ -19,14 +19,12 @@ function getImgByChannel(channelId) {
 
 const ProviderList = ({ apiKey, channelId }) => {
 	const [contentList, setContentList] = useState([]);
-	const [isMouseHovering, setMouseHovering] = useState(0);
-	const [thumbNailList, setThumbnailList] = useState([]);
 	const [Description, setDescription] = useState('');
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		console.log('helloworld');
-		const maxResult = 10;
+		const maxResult = 20;
 		const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&q=Trailer&channelId=${channelId}&key=${apiKey}`;
 
 		axios
@@ -48,7 +46,6 @@ const ProviderList = ({ apiKey, channelId }) => {
 			<div className="Container">
 				<div className="display">
 					{contentList.map((link, id) => {
-						console.log(link);
 						//link means the data at array[id]
 						return (
 							<div className="container">

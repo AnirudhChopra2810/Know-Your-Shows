@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
-import config from '../assets/config';
 import axios from 'axios';
 
 const Modals = (props) => {
@@ -9,15 +8,19 @@ const Modals = (props) => {
 
 	console.log(props.videoId);
 
-	// const getDescription = () => {
-	// 	const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${props.videoId}&key=${props.apikey}`;
-	// 	axios
-	// 		.get(url)
-	// 		.then((response) => {
-	// 			setDescription(response.data.items[0].snippet.description);
-	// 		})
-	// 		.catch((error) => console.log(error));
-	// };
+	useEffect(() => {
+		const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${props.videoId}&key=${props.apiKey}`;
+		axios
+			.get(url)
+			.then((response) => {
+				console.log(response.data);
+				setDescription(response.data.items[0].snippet.description);
+			})
+			.catch((error) => console.log(error));
+	}, []);
+
+	console.log(1);
+	console.log(props.open);
 
 	return (
 		<Modal
@@ -28,7 +31,10 @@ const Modals = (props) => {
 				left: '400px'
 			}}
 			basic
-			onClose={() => props.setOpen(false)}
+			onClose={() => {
+				props.setOpen(false);
+				props.setClicked(false);
+			}}
 			onOpen={() => props.setOpen(true)}
 			open={props.open}
 			size="small"

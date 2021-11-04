@@ -11,13 +11,12 @@ const Cards = ({ thumbnail, setOpen, open, link, title, description }) => {
 	return (
 		<div>
 			<Card
-				className="cards my-4"
+				className="cards "
 				onClick={() => {
 					setVideoId(link.id.videoId);
 					setClicked(true);
 					setOpen(true);
 				}}
-				style={{ overflow: 'auto', maxHeight: '30em' }}
 			>
 				<Image src={thumbnail} wrapped ui={false} className="image" />
 				<Card.Content className="content">
@@ -27,7 +26,9 @@ const Cards = ({ thumbnail, setOpen, open, link, title, description }) => {
 				</Card.Content>
 			</Card>
 
-			{clicked === true && <Modals apiKey={API_KEY} open={open} videoId={videoId} setOpen={setOpen} />}
+			{clicked === true && (
+				<Modals apiKey={API_KEY} open={open} videoId={videoId} setClicked={setClicked} setOpen={setOpen} />
+			)}
 		</div>
 	);
 };
