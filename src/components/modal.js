@@ -56,7 +56,15 @@ const Modals = (props) => {
 			></iframe>
 			<Modal.Content>{description}</Modal.Content>
 			<Modal.Actions>
-				<Button basic color="red" inverted onClick={() => props.setOpen(false)}>
+				<Button
+					basic
+					color="red"
+					inverted
+					onClick={() => {
+						props.setOpen(false);
+						props.setClicked(false);
+					}}
+				>
 					<Icon name="remove" /> close
 				</Button>
 			</Modal.Actions>
