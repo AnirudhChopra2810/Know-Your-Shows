@@ -46,7 +46,6 @@ const ProviderList = ({ apiKey, channelId }) => {
 			<div className="Container">
 				<div className="display">
 					{contentList.map((link, id) => {
-						//link means the data at array[id]
 						return (
 							<div className="container">
 								<div className="display">
