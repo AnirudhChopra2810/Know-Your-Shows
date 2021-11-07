@@ -4,6 +4,10 @@ import config from '../assets/config';
 import ProviderList from './providerlist';
 const { YT_CHANNEL_IDS, API_KEY } = config;
 
+const SidebarMenu = () => {
+	return;
+};
+
 const Nav = (props) => {
 	const [visible, setVisible] = useState(false);
 
@@ -27,6 +31,7 @@ const Nav = (props) => {
 				<Grid.Column>
 					<Sidebar.Pushable as={Segment}>
 						<Sidebar
+							fixed
 							as={Menu}
 							animation="overlay"
 							icon="labeled"
@@ -44,11 +49,17 @@ const Nav = (props) => {
 							</Menu.Item>
 							<Menu.Item as="a">
 								<Icon name="gamepad" />
-								Games
+								About
 							</Menu.Item>
 							<Menu.Item as="a">
 								<Icon name="camera" />
-								Channels
+								Contact me
+							</Menu.Item>
+							<Menu.Item as="a" href="https://github.com/AnirudhChopra2810">
+								<Icon name="github" />
+							</Menu.Item>
+							<Menu.Item as="a" href="https://www.linkedin.com/in/anirudh-chopra-300116225/">
+								<Icon name="linkedin" />
 							</Menu.Item>
 						</Sidebar>
 
