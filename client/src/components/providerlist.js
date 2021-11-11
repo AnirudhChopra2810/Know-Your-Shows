@@ -26,13 +26,14 @@ const ProviderList = ({ apiKey, channelId }) => {
 		console.log('helloworld');
 		const maxResult = 20;
 		const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&q=Trailer&channelId=${channelId}&key=${apiKey}`;
-
+        const url2 = `http://localhost:3000`
 		axios
-			.get(url)
+			.get(url2)
 			.then((response) => {
-				console.log('hello there');
+				console.log(response);
 				let data = response.data;
-				const link = data.items;
+				let link = data.link;
+				console.log(link);	
 				setContentList(link);
 			})
 			.catch((error) => console.log(error));
