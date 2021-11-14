@@ -6,7 +6,8 @@ app.use(cors());
 const path = require("path");
 const fs = require("fs");
 const { create } = require("domain");
-let prevReq = 0;
+const dotenv = require("dotenv");
+dotenv.config({path: "./config.env"});
 
 const bodyParser = require("body-parser");
 const { json } = require("body-parser");
@@ -15,6 +16,8 @@ app.use(bodyParser.json());
 const staticPath = path.join(__dirname, "../client/build");
 app.use(express.static(__dirname));
 
+const config = process.env;
+console.log(config.API_KEY);
 
 
 function checkTime (req, res, next){
@@ -44,10 +47,8 @@ function getData (){
 				console.log('hello there');
                 console.log(response);
 				let data = response.data.items;
-                // console.log(data);
                 const date = new Date();
                 const hours = date.getMinutes();
-
                 const collection = {link: data, hours: hours};
                 const link = JSON.stringify(collection);
                 fs.writeFile('apiData.txt', link, function(error){
@@ -66,10 +67,7 @@ app.get("/", (req, res) => {
         getData();
         console.log("i worked");
         fs.readFile('apiData.txt', 'utf-8', (err, data) => {
-            // let _data = JSON.parse(data);
-            console.log(data);
             return res.send(data);
-            // return res.send("hello")
         } )
     } catch (error) {
         console.log(error);

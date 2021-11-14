@@ -33,8 +33,6 @@ const ProviderList = ({ apiKey, channelId }) => {
 				console.log(response);
 				let data = response.data.link;
 				console.log(data);
-					// let link = data.link;
-					// console.log(link);	
 				setContentList(data);
 				console.log(contentList);
 			})
