@@ -31,10 +31,12 @@ const ProviderList = ({ apiKey, channelId }) => {
 			.get(url2)
 			.then((response) => {
 				console.log(response);
-				let data = response.data;
-				let link = data.link;
-				console.log(link);	
-				setContentList(link);
+				let data = response.data.link;
+				console.log(data);
+					// let link = data.link;
+					// console.log(link);	
+				setContentList(data);
+				console.log(contentList);
 			})
 			.catch((error) => console.log(error));
 	}, []);

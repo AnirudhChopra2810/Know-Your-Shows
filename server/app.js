@@ -20,10 +20,10 @@ app.use(express.static(__dirname));
 function checkTime (req, res, next){
     let date = new Date();
     let currentMinutes = date.getMinutes();
-    next();
+    console.log(currentMinutes);
+    
     
     fs.readFile('apiData.txt', 'utf-8',  (err, data) => {
-        return res.send(JSON.parse(data));
         let _data = JSON.parse(data);
         let minutes = _data.hours;
         if(currentMinutes >= minutes){
@@ -44,10 +44,11 @@ function getData (){
 				console.log('hello there');
                 console.log(response);
 				let data = response.data.items;
+                // console.log(data);
                 const date = new Date();
                 const hours = date.getMinutes();
 
-                const collection = {link: JSON.stringify(data), hours: hours};
+                const collection = {link: data, hours: hours};
                 const link = JSON.stringify(collection);
                 fs.writeFile('apiData.txt', link, function(error){
                    return console.log(error);
@@ -58,15 +59,16 @@ function getData (){
         }
 
 
-app.use(checkTime);
+// app.use(checkTime);
 
 app.get("/", (req, res) => {
     try {
         getData();
         console.log("i worked");
         fs.readFile('apiData.txt', 'utf-8', (err, data) => {
-            let _data = JSON.parse(data);
-            return res.send(_data);
+            // let _data = JSON.parse(data);
+            console.log(data);
+            return res.send(data);
             // return res.send("hello")
         } )
     } catch (error) {

@@ -4,9 +4,7 @@ import config from '../assets/config';
 import ProviderList from './providerlist';
 const { YT_CHANNEL_IDS, API_KEY } = config;
 
-const SidebarMenu = () => {
-	return;
-};
+
 
 const Nav = (props) => {
 	const [visible, setVisible] = useState(false);
