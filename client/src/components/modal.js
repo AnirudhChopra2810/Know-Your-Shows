@@ -6,21 +6,18 @@ const Modals = (props) => {
 	const [open, setOpen] = React.useState(props.open);
 	const [description, setDescription] = useState('');
 
-	console.log(props.videoId);
-
 	useEffect(() => {
 		const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${props.videoId}&key=${props.apiKey}`;
+		const url2 = `http://localhost:3000`
+	
 		axios
 			.get(url)
 			.then((response) => {
-				console.log(response.data);
+				console.log(response);
 				setDescription(response.data.items[0].snippet.description);
 			})
 			.catch((error) => console.log(error));
 	}, []);
-
-	console.log(1);
-	console.log(props.open);
 
 	return (
 		<Modal

@@ -35,7 +35,7 @@ const ProviderList = ({ apiKey, channelId }) => {
 			.get(url2, headers)
 			.then((response) => {
 				console.log(response);
-				let data = response.data.link;
+				let data = response.data.items;
 				console.log(data);
 				setContentList(data);
 				console.log(contentList);
