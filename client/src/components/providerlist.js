@@ -23,7 +23,7 @@ const ProviderList = ({ apiKey, channelId }) => {
 	const [open, setOpen] = useState(false);
 
 	const headers = {headers: {
-		'channelId': `${channelId}` 
+		'channelId': channelId 
 	}}
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ const ProviderList = ({ apiKey, channelId }) => {
 		const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&q=Trailer&channelId=${channelId}&key=${apiKey}`;
         const url2 = `http://localhost:3000`
 		axios
-			.get(url2, headers)
+			.get(url)
 			.then((response) => {
 				console.log(response);
 				let data = response.data.items;

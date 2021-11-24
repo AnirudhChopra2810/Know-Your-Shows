@@ -3,21 +3,20 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 const axios = require("axios")
-const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config({path: "./config.env"});
-
+const path = require("path");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
 const staticPath = path.join(__dirname, "../client/build");
-app.use(express.static(__dirname));
+console.log(staticPath);
+app.use(express.static(staticPath));
 
 const config = process.env;
     let primedata = null;
     let netflixdata = null;
     let lastUpdateTime = 0;
-    // let description = null;
     const minutes = 1;
     const seconds = 60;
     const updateInterval = minutes*seconds*1000;
@@ -31,30 +30,12 @@ const config = process.env;
     
     if(!netflixdata || !lastUpdateTime  || (lastUpdateTime + updateInterval) <= Date.now()){
         netflixdata = await netflixData(channelID);
-        // description = await _description(videoID);
         lastUpdateTime = Date.now();
         console.log("i worked");
     }
-
-//     description = await _description(videoID);
-//    // console.log(description);
-//     console.log(videoID);
     return netflixdata, primedata;
  }       
 
-// const _description = async (videoID) => {
-//     const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoID}&key=${config.API_KEY}`;
-//     const Data = await axios
-//     .get(url)
-//     .then((response) => {
-//         //console.log(response);
-//         return response.data;
-        
-//     })
-//     .catch((error) => console.log(error));
-
-//     return Data;
-// }
 
 const  netflixData = async  (cachedData, channelID) => {    
     let channelid = null;
@@ -109,15 +90,16 @@ const  primeData = async  (channelID) => {
 
 app.get("/", async (req, res) => {
     try {
+        console.log("i worked");
+        console.log(req.headers.channelid);
+        // return res.send("hello");
         checkTime(req.headers.channelid, req.headers.videoid);
         if(req.headers.channelid === config.NETFLIX){
             return res.send(netflixdata);
         }else if(req.headers.channelid === config.AMAZON_PRIME){
             return res.send(primedata);
         }
-        // console.log(description);
-        // return res.send(description);
-
+        
     } catch (error) {
         console.log(error);
     }
