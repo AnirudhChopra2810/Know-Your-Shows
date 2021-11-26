@@ -9,9 +9,10 @@ const path = require("path");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
-const staticPath = path.join(__dirname, "../client/build");
+const staticPath = path.join(__dirname, "/build");
 console.log(staticPath);
 app.use(express.static(staticPath));
+
 
 const config = process.env;
     let primedata = null;
